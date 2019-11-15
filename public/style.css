@@ -1,0 +1,40 @@
+.color{
+    background:#fff;
+}
+.bw{
+    background:#222222;
+}
+.logo{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.logo_bw{
+    height: 150px;
+    width: 300px;
+    background:url('/static/img/logo_bw.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.logo_color{
+    height: 150px;
+    width: 300px;
+    background:url('/static/img/logo_color.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.c_soon_color{
+    text-align: center;
+    color:#300D4B;
+    font-weight: 600;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+.c_soon_bw{
+    text-align: center;
+    color:#fff;
+    font-weight: 600;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
