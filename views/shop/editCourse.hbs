@@ -1,0 +1,27 @@
+<h2>Сторінка редагування курсів</h2>
+<form action="/shop/update" method="POST" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Placeholder" id="title" name="title" type="text" class="validate" value="{{course.title}}">
+          <label for="title">Назва курсу:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="price" name="price" type="number" class="validate" value="{{course.price}}">
+          <label for="price">Ціна:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="imageUrl" name="img" type="text" class="validate" value="{{course.img}}">
+          <label for="imageUrl">Шлях до картинки:</label>
+        </div>
+      </div>
+      <input type="text" hidden name="id" value="{{course.id}}">
+      <div class="row">
+        <div class="input-field col s12">
+            <button class="btn btn-primary">Оновити курс</button>
+        </div>
+      </div>
+    </form>

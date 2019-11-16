@@ -1,0 +1,27 @@
+<h1>Курси</h1>
+  <div class="row">
+    <div class="col s6 m4">
+    {{#if courses}}
+        {{#each courses}}
+        <div class="card">
+            <div class="card-image">
+            <img src="{{img}}">
+            <span class="card-title">{{title}}</span>
+            </div>
+            <div class="card-content">
+            <p>Вартість:{{price}}</p>
+            </div>
+            <div class="card-action">
+            <a href="/shop/{{id}}">Переглянути</a>
+            </div>
+            <div class="card-action">
+            <a href="/shop/{{id}}/edit">Редагувати</a>
+            </div>
+            <div class="card-action">
+            <a href="/shop/{{id}}/card">Додати у кошик</a>
+            </div>
+        </div>
+        {{/each}}
+    {{/if}}
+    </div>
+  </div>

@@ -69,3 +69,66 @@
     text-decoration: none;
     color:#ff0;
 }
+.chat-background{
+    background-color: #ff0;
+}
+.logo-menu{
+    height: 80px;
+    width: 149px;
+    padding: 10%;
+    background-color: #1474bc;
+}
+.logo-menu span{
+    background: url(/static/img/logo_bw.svg);
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.nav-wrapper {
+    background-color: #222222 !important;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav .brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+    left: 10%;
+}
+/* nav ul:not(.browser-default) {
+    padding-left: 0;
+    list-style-type: none;
+    padding-right: 10%;
+} */
+nav a:hover{
+    text-decoration: none;
+    color:#ff0;
+}
+
+.h_menu_nav
+{
+    padding-right: 10%;
+}
+.h_menu_dropdown li
+{
+    background-color: #222;
+}
+.h_menu_dropdown li a
+{
+    color: #fff;
+}
+.h_menu_dropdown li:hover
+{
+    background-color: #1474bc;
+}
+.container{
+    margin-top: 36px;
+}

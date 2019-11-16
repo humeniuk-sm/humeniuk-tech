@@ -1,3 +1,7 @@
+$(document).ready(()=>{
+    $(".dropdown-trigger").dropdown();
+});
+
 function changeTheme(){
     let body = document.getElementsByTagName('body')[0]
     let bodyStyle = body.getAttribute('class')
