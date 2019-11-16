@@ -38,3 +38,34 @@
     font-family: sans-serif;
     text-transform: uppercase;
 }
+
+.main_menu{
+    padding: 10px 0px;
+    text-align: center;
+    list-style: none;
+    background-color: #222222;
+}
+.main_menu .description{
+    display: block;
+    font-size: 8pt;
+    padding: 5px;
+    text-align: left;
+    color:#ff3f00;
+    font-weight: 200;
+}
+.main_menu ul{
+    margin: 0px;
+    padding:0px;
+}
+.main_menu li{
+    display: inline;
+    padding: 20px;
+}
+.main_menu a{
+    text-decoration: none;
+    color:white
+}
+.main_menu a:hover{
+    text-decoration: none;
+    color:#ff0;
+}
