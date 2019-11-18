@@ -3,6 +3,9 @@ const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
 const favicon = require('serve-favicon')
+const {google} = require('googleapis')
+
+
 // создаем объект приложения
 const app = express();
 const hbs = exphbs.create({
@@ -17,6 +20,8 @@ const homeRouter = require('./routes/homeRouter')
 const shopRouter = require('./routes/shopRouter')
 const chatRouter = require('./routes/chatRouter')
 const blogRouter = require('./routes/blogRouter')
+const ymusicRouter = require('./routes/ymusicRouter')
+
 
 app.use(express.urlencoded({extended:true}))
 app.use(favicon(path.join(__dirname,'public','favicon.ico')))
@@ -25,5 +30,6 @@ app.use('/',homeRouter)
 app.use('/shop/',shopRouter)
 app.use('/chat/',chatRouter)
 app.use('/blog/',blogRouter)
+app.use('/ymusic/',ymusicRouter)
 
 app.listen(settings.PORT);
