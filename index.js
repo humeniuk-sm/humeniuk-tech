@@ -4,6 +4,7 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 const favicon = require('serve-favicon')
 const mongoose = require('mongoose')
+const {google} = require('googleapis')
 
 async function start()
 {
@@ -34,6 +35,7 @@ async function start()
     }
 }
 
+// создаем объект приложения
 const app = express();
 const hbs = exphbs.create({
     defaultLayout:'main',
@@ -48,6 +50,8 @@ const homeRouter = require('./routes/homeRouter')
 const shopRouter = require('./routes/shopRouter')
 const chatRouter = require('./routes/chatRouter')
 const blogRouter = require('./routes/blogRouter')
+const ymusicRouter = require('./routes/ymusicRouter')
+
 
 
 
@@ -58,5 +62,6 @@ app.use('/',homeRouter)
 app.use('/shop/',shopRouter)
 app.use('/chat/',chatRouter)
 app.use('/blog/',blogRouter)
+app.use('/ymusic/',ymusicRouter)
 
 start()
