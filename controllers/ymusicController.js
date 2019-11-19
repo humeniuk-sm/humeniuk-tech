@@ -1,22 +1,18 @@
-const {google} = require('googleapis')
 const path = require('path')
 const settings = require('../settings')
-
+const telBot = require('../include/telegramBot')
+const huMusic = require('../include/huMusic')
 
 exports.index = (request,response)=>{
+    const bot = new telBot()
+    bot.sendMessage('Hello world')
     response.render(path.join('ymusic','index'))
 }
-exports.search = (request,response)=>{
-    const youtube = google.youtube({
-        version:'v3',
-        auth:settings.YOUTUBE_KEY
-    })
-    const params = {
-        part:'snippet',
-        q:request.body.video_name
-    }
-    const result = youtube.search.list(params).then((content)=>{
-        const link = content.data.items[0].id.videoId
-        response.render(path.join('ymusic','result'),{videoId:link})
-    })
+exports.search = async(request,response)=>{
+    const music = new huMusic()
+    const links = await music.getSearch(request.body.video_name)
+    const bot = new telBot()
+    const shareUrl = `https://youtu.be/${links[3].id}`
+    bot.sendMessage(shareUrl)
+    response.render(path.join('ymusic','result'),{videos:links})
 }
