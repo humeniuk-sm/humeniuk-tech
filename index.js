@@ -3,12 +3,26 @@ const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
 const favicon = require('serve-favicon')
-const mongoose = require('mongoose')
-const {google} = require('googleapis')
+const cron = require('cron')
+const huMusic = require('./include/huMusic')
+const tbot = require('./include/telegramBot')
 
 async function start()
 {
     try {
+        const cronWorker = new cron.CronJob('* */5 * * *',function(){
+            const music = new huMusic()
+            music.getUpdates()
+        })
+        const cronSender = new cron.CronJob('*/20 * * * *',async function(){
+            const music = new huMusic()
+            const link = await music.sendTrack()
+            const shareUrl = `https://youtu.be/${link}`
+            const bot = new tbot()
+            bot.sendMessage(shareUrl)
+        })
+        cronWorker.start()
+        cronSender.start()
         // await mongoose.connect(settings.MONGO_DB_CONNECTION,{useNewUrlParser:true,
         //     useUnifiedTopology: true})
         const server = app.listen(settings.PORT)
@@ -22,14 +36,13 @@ async function start()
             socket.on('change_name',(data)=>{
                 const oldUsername =  socket.username
                 socket.username = data.username
-                io.sockets.emit('change_name', {username : socket.username,oldname:oldUsername});
+                io.sockets.emit('change_name', {username:socket.username,oldname:oldUsername});
             })
             socket.on('send_message',(data)=>{
                 const mess = data.message
                 io.sockets.emit('getMessage', {username:socket.username,message:mess});
             })
         })
-        
     } catch (error) {
         console.log(error)
     }
@@ -51,9 +64,6 @@ const shopRouter = require('./routes/shopRouter')
 const chatRouter = require('./routes/chatRouter')
 const blogRouter = require('./routes/blogRouter')
 const ymusicRouter = require('./routes/ymusicRouter')
-
-
-
 
 app.use(express.urlencoded({extended:true}))
 app.use(favicon(path.join(__dirname,'public','favicon.ico')))

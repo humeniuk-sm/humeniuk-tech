@@ -17,6 +17,7 @@
     "googleapis": "^45.0.0",
     "handlebars": "^4.5.3",
     "mongoose": "^5.7.11",
+    "mysql2": "^2.0.0",
     "nodemon": "^1.19.4",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.3.0",

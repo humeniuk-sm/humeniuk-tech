@@ -5,7 +5,7 @@ class TelegramBot{
         this.token = settings.TELEGRAM_TOKEN
     }
     sendMessage(message){
-        const chat_id = 640155402
+        const chat_id = -1001312230967
         const URL = `https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${chat_id}&text=${message}`
 
         const get = http.get(URL,(response)=>{
