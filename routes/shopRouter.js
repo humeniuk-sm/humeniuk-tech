@@ -12,7 +12,7 @@ router.get('/card',shopController.card)
 router.get('/:id',shopController.course)
 router.get('/:id/edit',shopController.editCourse)
 router.get('/:id/card',shopController.addToCard)
-router.get('/:id/card-delete',shopController.removeFromCard)
+router.delete('/card/remove/:id',shopController.removeFromCard)
 
 
 

@@ -17,3 +17,33 @@ function changeTheme(){
         document.getElementsByClassName('logo_color')[0].setAttribute('class','logo_bw')
     }
 }
+
+const $card = document.querySelector('#card')
+if($card){
+    $card.addEventListener('click',event=>{
+        if(event.target.classList.contains('js-remove')){
+            const id = event.target.dataset.id
+            fetch('/shop/card/remove/'+id,{
+                method:'delete'
+            }).then(res=>res.json()).then(card=>{
+                if(card.courses.length){
+                    const html = card.courses.map(c=>{
+                        return `<tr>
+                        <td>${c.title}</td>
+                        <td>${c.price}</td>
+                        <td>${c.count}</td>
+                        <td>
+                            <button class="btn btn-small js-remove" data-id=${c.id}>Видалити</button>
+                        </td>
+                    </tr>`
+                    }).join()
+                    $card.querySelector('tbody').innerHTML = html
+                    $card.querySelector('.price').textContent = card.price
+                }
+                else{
+                    $card.innerHTML('<p>Кошик порожній</p>')
+                }
+            })
+        }
+    })
+}

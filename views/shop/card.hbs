@@ -1,28 +1,32 @@
  <h2>Кошик</h2>
-{{#if items}}
-<table>
-<thead>
-    <th>Назва товару</th>
-    <th>Ціна за 1</th>
-    <th>Кількість</th>
-    <th></th>
-</thead>
-<tbody>
-    {{#each items}}
-    <tr>
-        <td>{{title}}</td>
-        <td>{{price}}</td>
-        <td>{{count}}</td>
-        <td><a href="/shop/{{id}}/card-delete">Видалити</a></td>
-    </tr>
-    {{/each}}
-    <tfoot>
-        <th colspan="2">Всього до оплати:</th>
-        <th>
-            {{totalPrice}}
-        </th>
+ <div id="card">
+    {{#if items}}
+    <table>
+    <thead>
+        <th>Назва товару</th>
+        <th>Ціна за 1</th>
+        <th>Кількість</th>
         <th></th>
-    </tfoot>
-</tbody>
-</table>
-{{/if}}
+    </thead>
+    <tbody>
+        {{#each items}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{price}}</td>
+            <td>{{count}}</td>
+            <td>
+                <button class="btn btn-small js-remove" data-id={{id}}>Видалити</button>
+            </td>
+        </tr>
+        {{/each}}
+        <tfoot>
+            <th colspan="2">Всього до оплати:</th>
+            <th class="price">
+                {{price}}
+            </th>
+            <th></th>
+        </tfoot>
+    </tbody>
+    </table>
+    {{/if}}
+ </div>

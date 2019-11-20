@@ -55,7 +55,7 @@ class Course{
         const courses = await Course.getAll()
         const index = courses.findIndex(c=> c.id === updatedCourse.id)
         courses[index] = updatedCourse
-        
+
         return new Promise((resolve,reject)=>{
             fs.writeFile(path.join(__dirname,'..','data','courses.json'),JSON.stringify(courses),(err)=>{
                 if(err) {

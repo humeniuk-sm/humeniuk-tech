@@ -17,7 +17,6 @@ exports.addCourse = (request,response)=>{
 exports.saveCourse = async (request,response)=>{
     const course = new Course(request.body.title,request.body.price,request.body.img)
     await course.save()
-
     response.render(path.join('shop','saveCourse'))
 }
 exports.editCourse = async(request,response)=>{
@@ -38,10 +37,10 @@ exports.addToCard = async(request,response)=>{
 }
 exports.card = async(request,response)=>{
     const card = await Card.getItems()
-    response.render(path.join('shop','card'),{items:card.items,totalPrice:card.totalPrice})
+    response.render(path.join('shop','card'),{items:card.courses,price:card.price})
 }
 exports.removeFromCard = async(request,response)=>{
     const id = request.params.id
-    await Card.remove(id)
-    return response.redirect(path.join('/shop','card'))
+    const card = await Card.remove(id)
+    response.status(200).json(card)
 }
