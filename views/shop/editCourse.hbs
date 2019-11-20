@@ -21,7 +21,11 @@
       <input type="text" hidden name="id" value="{{course.id}}">
       <div class="row">
         <div class="input-field col s12">
-            <button class="btn btn-primary">Оновити курс</button>
+            <button class="btn btn-primary" type="submit">Оновити курс</button>
         </div>
       </div>
+    </form>
+    <form action="/shop/course/remove" method="post">
+      <input hidden name="id" value="{{course.id}}">
+      <button class="btn btn-primary red" type="submit">Видалити курс</button>
     </form>
