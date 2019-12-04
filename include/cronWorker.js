@@ -7,7 +7,7 @@ class CronWorker{
         this.cronStatus = new cron.CronJob('* * * * *',function(){
             console.log('Every minutes')
         })
-        this.cronMusicUpdate = new cron.CronJob('* */5 * * *',function(){
+        this.cronMusicUpdate = new cron.CronJob('*/5 * * * * *',function(){
             const music = new huMusic()
             music.getUpdates()
         })

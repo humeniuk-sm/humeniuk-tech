@@ -26,8 +26,9 @@ if($card){
             fetch('/shop/card/remove/'+id,{
                 method:'delete'
             }).then(res=>res.json()).then(card=>{
-                if(card.courses.length){
-                    const html = card.courses.map(c=>{
+                console.log(card)
+                if(card.cart.items.length){
+                    const html = card.cart.items.map(c=>{
                         return `<tr>
                         <td>${c.title}</td>
                         <td>${c.price}</td>

@@ -4,6 +4,7 @@ const Course = require('../models/course')
 function mapCartItems(cart){
     return cart.items.map(c=>({
         ...c.courseId._doc,
+        id:c.courseId.id,
         count:c.count})
     )
 }
@@ -79,11 +80,13 @@ exports.card = async(request,response)=>{
 }
 exports.removeFromCard = async(request,response)=>{
     const id = request.params.id
-    await request.user.removeFromCart(id)
-    const user = await request.user.populate('cart.items.courseId').execPopulate()
-    const courses = mapCartItems(user.cart)
-    const cart = {
-        courses,price:calculatePrice(courses)
-    }
+    const user = await request.user
+    await (user.populate('cart.items.courseId').execPopulate())
+    const cart = await user.removeFromCart(id)
+    // await populate('cart.items.courseId').execPopulate()
+    // const courses = mapCartItems(user.cart)
+    // const cart = {
+    //     courses,price:calculatePrice(courses)
+    // }
     response.status(200).json(cart)
 }
